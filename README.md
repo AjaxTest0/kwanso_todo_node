@@ -1,1 +1,2 @@
-# kwanso_todo_next
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all

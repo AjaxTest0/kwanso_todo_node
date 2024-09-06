@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Todo List</h2>
+
+    <div class="mb-4">
+        <form id="addTaskForm" class="form-inline">
+            <div class="form-group mr-2">
+                <input type="text" class="form-control" id="taskInput" placeholder="Enter new task" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+            <label id="taskInput-error" class="error" for="taskInput"></label>
+        </form>
+    </div>
+    <ul class="list-group" id="list-group">
+    </ul>
+</div>
+
+{{#section 'script'}}
+<script type="text/javascript" src="/js/task.js"></script>
+{{/section}}

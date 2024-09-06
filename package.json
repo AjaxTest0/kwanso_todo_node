@@ -1,0 +1,42 @@
+{
+  "name": "kwanso_todo_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AjaxTest0/kwanso_todo_node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AjaxTest0/kwanso_todo_node/issues"
+  },
+  "homepage": "https://github.com/AjaxTest0/kwanso_todo_node#readme",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "debug": "^4.3.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.2.0",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
+    "@types/node": "^22.5.4",
+    "dump-die": "^1.0.0",
+    "sequelize-cli": "^6.6.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  }
+}

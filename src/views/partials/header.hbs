@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-dark bg-primary">
+        <p class="navbar-brand" href="#">{{pageName}}</p>
+
+        <span class="navbar-text">
+            <button type="button" class="btn btn-primary">
+
+                {{#if session.user}}
+                <a href="/logout" class="">Logout</a>
+                {{/if}}
+            </button>
+        </span>
+    </nav>
+</header>

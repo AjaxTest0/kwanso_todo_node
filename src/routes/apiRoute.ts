@@ -15,8 +15,6 @@ router.post('/token/v1/generate', isAuthenticated, generateToken);
 //task apis
 router.post('/tasks/v1', isAuthenticated, saveTask);
 router.get('/tasks/v1/user/:userId', isAuthenticated, getTasksByUserId);
-router.get('/tasks/v1/:id', isAuthenticated, getTaskById);
-router.put('/tasks/v1/:id', isAuthenticated, updateTask);
 router.delete('/tasks/v1/:id', isAuthenticated, deleteTask);
 router.get('/tasks/v1', isAuthenticated, getTasks);
 

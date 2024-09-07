@@ -9,7 +9,7 @@ interface ResponseData {
     msg?: string;
 }
 
-export const sendResponse = (res: Response, { status, body = {}, msg }: ResponseData) => {
+export const sendResponse = (res: Response, { status, body = {}, msg }: ResponseData) => {    
     const responseBody = typeof body === 'object' ? body : {};
     res.status(status).json({ msg, data: responseBody });
 };

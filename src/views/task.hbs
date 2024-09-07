@@ -1,19 +1,16 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <h2 class="mb-4">Todo List</h2>
 
     <div class="mb-4">
         <form id="addTaskForm" class="form-inline">
             <div class="form-group mr-2">
                 <input type="text" class="form-control" id="taskInput" placeholder="Enter new task" required>
+                <input type="hidden" class="form-control" id="taskId" >
             </div>
-            <button type="submit" class="btn btn-primary">Add Task</button>
+            <button type="submit" class="btn btn-primary" id="saveTask">Save Task</button>
             <label id="taskInput-error" class="error" for="taskInput"></label>
         </form>
     </div>
-    <ul class="list-group" id="list-group">
+    <ul class="list-group " id="list-group">
     </ul>
 </div>
-
-{{#section 'script'}}
-<script type="text/javascript" src="/js/task.js"></script>
-{{/section}}

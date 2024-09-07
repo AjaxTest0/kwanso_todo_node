@@ -8,6 +8,7 @@ import path from 'path';
 import { engine } from 'express-handlebars';
 import session from 'express-session';
 import { errorHandler } from './utils/helper';
+// import 'log-timestamp';
 dotenv.config();
 
 const app = express();
@@ -31,12 +32,10 @@ const sectionHelper = (name: string, options: any) => {
     console.log("🚀 ~ sections:", sections);
     return '';
 };
-console.log("🚀 ~ sectionHelper>>", sectionHelper)
 
-// console.log("🚀 ~ helpers>>", helpers)
 const helpers = {
     section: sectionHelper
-} 
+}
 
 app.engine('hbs', engine({
     extname: '.hbs',
@@ -64,4 +63,4 @@ sequelize.sync().then(() => {
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
     });
-}).catch(error => console.log(error));
+}).catch(error => console.error(" == Dbs Erros == ", error));

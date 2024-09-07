@@ -3,7 +3,7 @@ import sequelize from '../db';
 
 export class Task extends Model {
     public id!: number;
-    public userId!: number;
+    public user_id!: number;
     public task!: string;
     public status!: string;
     public readonly createdAt!: Date;

@@ -19,6 +19,10 @@ router.get('/tasks/list', isAuthenticated, (req: Request, res: Response) => {
     res.render('task', { pageName: 'Task Lists' })
 })
 
+router.get('/users/tasks/list', isAuthenticated, (req: Request, res: Response) => {
+    res.render('user_tasks', { pageName: 'Users Task' })
+})
+
 router.get('/logout', isAuthenticated, (req: Request, res: Response) => {
     delete req.session.user
     res.redirect('/')

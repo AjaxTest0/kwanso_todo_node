@@ -18,8 +18,12 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
             if (!isMatch) {
                 next('Invalid Password');
             }
-            
+
+            delete user.password
             req.session.user = user.toJSON();
+            req.session.user.is_admin = user.role === 'admin';
+            delete req.session.user.password
+
 
             sendResponse(res, { status: 200, body: user.toJSON(), msg: 'User found' });
         } else {
@@ -33,27 +37,37 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
 export const generateToken = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { email } = req.body;
-        let user = await UserService.getUserByEmail(email)
-        let token = crypto.randomBytes(length).toString('hex')
+        if(!email){
+            next('Email is required');
+        }
+        let user = await UserService.getUserByEmail(email);
+        const expiry = new Date(Date.now() + 24 * 3600 * 1000);
+
+        console.log("🚀 ~ user>>", user)
         if (user) {
-            let tokenToken = await UserTokenService.getTokenByUserId(user.id)
+            let tokenToken = await UserTokenService.getTokenByUserId(user.id);
+
             if (tokenToken) {
-                token = tokenToken.token;
+                await UserTokenService.updateUserToken(user.id, expiry);
+            } else {
+                const token = crypto.randomBytes(10).toString('hex');
+                await UserTokenService.createUserToken(user.id, token, false, true, expiry);
             }
+
+            sendResponse(res, { status: 200, body: {}, msg: 'Token Updated Successfully' });
         } else {
             const hashedPassword = await bcrypt.hash('password', 10);
-            const expiry = new Date(Date.now() + 24 * 3600 * 1000);
-            user = await UserService.createUser(email, hashedPassword, 'client')
+            user = await UserService.createUser(email, hashedPassword, 'client');
 
+            const token = crypto.randomBytes(10).toString('hex');
             await UserTokenService.createUserToken(user.id, token, false, true, expiry);
 
+            sendResponse(res, { status: 200, body: {}, msg: 'User and Token Created Successfully' });
         }
-
-        sendResponse(res, { status: 200, body: {}, msg: 'Token Created Successfully' });
     } catch (error) {
         next(error);
     }
-}
+};
 
 export const profile = async (req: Request, res: Response, next: NextFunction) => {
     res.json(req.session.user);

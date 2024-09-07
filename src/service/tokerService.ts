@@ -21,8 +21,8 @@ export class UserTokenService {
         return UserToken.findOne({ where: { token } });
     }
 
-    public static async updateUserToken(id: number, updates: Partial<UserToken>) {
-        return UserToken.update(updates, { where: { id }, returning: true });
+    public static async updateUserToken(id: number, expiry: Date) {
+        return UserToken.update({ expiry }, { where: { id }, returning: true });
     }
 
     public static async deleteUserToken(id: number) {

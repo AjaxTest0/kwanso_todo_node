@@ -2,6 +2,24 @@
     <nav class="navbar navbar-dark bg-primary">
         <p class="navbar-brand" href="#">{{pageName}}</p>
 
+        <div class="navbar">
+            <ul class="navbar-nav mr-auto">
+                {{#if session.user}}
+                {{#if session.user.is_admin}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/token/list">Generate Token </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/tasks/list">User Tasks</a>
+                </li>
+                {{/if}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tasks/list">My tasks</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+
         <span class="navbar-text">
             <button type="button" class="btn btn-primary">
 

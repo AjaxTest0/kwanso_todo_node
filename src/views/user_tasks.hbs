@@ -1,0 +1,40 @@
+<div class="container mt-4" id="task-table">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="email-search" class="form-label">Email:</label>
+                <input type="text" id="email-search" class="form-control" placeholder="Search by email">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="status-search" class="form-label">Status:</label>
+                <input type="text" id="status-search" class="form-control" placeholder="Search by status">
+            </div>
+
+            <div class="col-md-4 mb-3 d-flex align-items-end">
+                <button id="search-button" class="btn btn-primary w-100">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="scroll-container">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </div>
+    <nav>
+        <ul class="pagination" id="pagination">
+        </ul>
+    </nav>
+</div>
